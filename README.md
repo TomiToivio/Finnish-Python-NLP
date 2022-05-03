@@ -16,7 +16,7 @@ English Language has a wide variety of open source sentiment analysis libraries 
 
 ## How is it used?
 
-Install it yourself or try it online on [nlp.ukuli.fi](nlp.ukuli.fi). Chatbot version coming soon. 
+Install it yourself or try it online on [http://nlp.ukuli.fi](http://nlp.ukuli.fi). Chatbot version coming soon. 
 
 ## Data sources and AI methods
 
