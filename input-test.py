@@ -1,5 +1,8 @@
 import feedparser
 import spacy
+import configparser
+config = configparser.ConfigParser()
+config.read('ukuli.ini')
 nlp = spacy.load("fi_core_news_lg")
 lemmatizer = nlp.get_pipe("lemmatizer")
 entity_dictionary = {}
