@@ -18,11 +18,17 @@ def parse_doc(input_str):
     #for token in doc:
     #    print(token.text, token.dep_, token.head.text, token.head.pos_,
     #    [child for child in token.children])
+    parse_intent(doc)
     parse_entities(doc)
     #ents = [(e.text, e.label_, e.kb_id_) for e in doc.ents]
     #for ent in doc.ents:
     #    print(ent.text, ent.start_char, ent.end_char, ent.label_)
     #    print(ent)
+
+def parse_intent(doc):
+    for token in doc:
+        print(token.text, token.dep_, token.head.text, token.head.pos_,
+        [child for child in token.children])
 
 def parse_entities(doc):
     global entity_dictionary
