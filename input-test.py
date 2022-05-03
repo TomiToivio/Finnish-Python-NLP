@@ -1,9 +1,7 @@
 import feedparser
 import spacy
-from spacytextblob.spacytextblob import SpacyTextBlob
 nlp = spacy.load("fi_core_news_lg")
 lemmatizer = nlp.get_pipe("lemmatizer")
-nlp.add_pipe('spacytextblob')
 entity_dictionary = {}
 
 def parse_feed():
@@ -23,17 +21,10 @@ def parse_doc(input_str):
     #    [child for child in token.children])
     parse_intent(doc)
     parse_entities(doc)
-    parse_sentiment(doc)
     #ents = [(e.text, e.label_, e.kb_id_) for e in doc.ents]
     #for ent in doc.ents:
     #    print(ent.text, ent.start_char, ent.end_char, ent.label_)
     #    print(ent)
-
-def parse_sentiment(doc):
-    print(doc._.blob.polarity)                           
-    print(doc._.blob.subjectivity)                        
-    print(doc._.blob.sentiment_assessments.assessments)   
-    print(doc._.blob.ngrams())                            
 
 def parse_intent(doc):
     for token in doc:
