@@ -19,7 +19,8 @@ English Language has a wide variety of open source sentiment analysis libraries 
 Install it yourself or try it online on [https://finnish-python-nlp.herokuapp.com/](https://finnish-python-nlp.herokuapp.com/). Chatbot version coming soon. 
 
 ## Data sources and AI methods
-
+* [Spacy](https://spacy.io/) 
+* [PyTorch](https://pytorch.org/)
 
 ## Challenges
 
