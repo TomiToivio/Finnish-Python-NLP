@@ -1,8 +1,11 @@
 import feedparser
 import spacy
+from wit import Wit
 import configparser
 config = configparser.ConfigParser()
 config.read('ukuli.ini')
+wit_token = config['wit.ai']['token']
+wit_client = Wit(wit_token)
 nlp = spacy.load("fi_core_news_lg")
 lemmatizer = nlp.get_pipe("lemmatizer")
 entity_dictionary = {}
@@ -16,6 +19,7 @@ def parse_feed():
     return summaries
 
 def parse_doc(input_str):
+    wit_api(input_str)
     doc = nlp(str(input_str))
     #print(doc.vector)
     #print([token.lemma_ for token in doc])
@@ -67,6 +71,10 @@ def parse_entities(doc):
             entity_dictionary.update({ent[0]: entity_seen})
         else:
             entity_dictionary.update({ent[0]: 1})
+
+def wit_api(message):
+    response = wit_client.message(message)
+    print(response)
 
 def main():
     global entity_dictionary
