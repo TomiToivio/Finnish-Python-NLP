@@ -27,14 +27,32 @@ def parse_doc(input_str):
 
 def parse_intent(doc):
     for token in doc:
-        print(token.text, token.dep_, token.head.text, token.head.pos_,
-        [child for child in token.children])
+        token_position = token.head.pos_
+        #print(token_position)
+        match token_position:
+            case "VERB":
+                print(token.text, token.dep_, token.head.text, token.head.pos_,[child for child in token.children])
+                print(token.text)
+                print(token.dep_)
+                print(token.head.text)
+                print(token.head.pos_)
+                return "VERB"
+            case "NOUN":
+                return "NOUN"
+            case "ADJ":
+                return "ADJ"
+            case "PROPN":
+                return "PROPN"    
+            case _:
+                return "OTHER"
+
+    #    print(token.text, token.dep_, token.head.text, token.head.pos_,[child for child in token.children])
 
 def parse_entities(doc):
     global entity_dictionary
     ents = [(e.text, e.label_, e.kb_id_) for e in doc.ents]
     for ent in ents:
-        print(ent[0], ent[1], ent[2])
+        #print(ent[0], ent[1], ent[2])
         entity_seen = entity_dictionary.get(ent[0])
         if entity_seen:
             entity_seen = entity_seen + 1
@@ -47,6 +65,6 @@ def main():
     input_strings = parse_feed()
     for input_string in input_strings:
         parse_doc(input_string)
-    print(entity_dictionary)
+    #print(entity_dictionary)
 
 main()
