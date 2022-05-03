@@ -31,11 +31,9 @@ def parse_intent(doc):
         #print(token_position)
         match token_position:
             case "VERB":
-                print(token.text, token.dep_, token.head.text, token.head.pos_,[child for child in token.children])
-                print(token.text)
-                print(token.dep_)
-                print(token.head.text)
-                print(token.head.pos_)
+                #print(token.text, token.dep_, token.head.text, token.head.pos_,[child for child in token.children])
+                subject = token.text
+                verb = token.head.text
                 return "VERB"
             case "NOUN":
                 return "NOUN"
@@ -45,7 +43,6 @@ def parse_intent(doc):
                 return "PROPN"    
             case _:
                 return "OTHER"
-
     #    print(token.text, token.dep_, token.head.text, token.head.pos_,[child for child in token.children])
 
 def parse_entities(doc):
